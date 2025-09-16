@@ -19,12 +19,18 @@ function ToDoList(){
         setSize(text.length + 1)
     },[text])
 
+    const removeFromTodo = (removeavle: string) => {
+        setTodos(prev => prev.filter(e =>e !== removeavle))
+    }
+
     return(<>
         <input style={{width: size + "rem"}} type="text" name="" id="" value={text}
             onChange={(e)=>setText(e.target.value)}/>
         <button onClick={addToTodos}>+</button>
         <ul>
-            {todos.map(todo => <li>{todo}</li>)}
+            {todos.map(todo => <li>{todo}
+            <button onClick={()=>removeFromTodo(todo)}>❌</button>
+            </li>)}
         </ul>
     </>)
 }
